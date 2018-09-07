@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     private final int REQ_CODE_SPEECH_OUTPUT = 143;
 
+
     //Label que recebe o que foi falado
     TextView lblShowVoice;
     //Botão para começar a falar
@@ -78,7 +79,9 @@ public class MainActivity extends AppCompatActivity {
                      voiceInText = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
                     lblShowVoice.setText(voiceInText.get(0));
 
-                    lblResultado.setText("Olá "+voiceInText.get(0));
+                   // lblResultado.setText("Olá "+voiceInText.get(0));
+
+
 
                 }
                 break;
