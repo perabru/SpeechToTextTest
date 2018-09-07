@@ -10,6 +10,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 import java.util.Locale;
 
@@ -28,6 +31,9 @@ public class MainActivity extends AppCompatActivity {
     TextView lblResultado;
     //Array que recebe primeiramente o que foi falado
     ArrayList<String>  voiceInText;
+
+    //FiREBASE - vai no nó raiz do firebase
+    private DatabaseReference referencia = FirebaseDatabase.getInstance().getReference();
 
 
 
@@ -79,8 +85,26 @@ public class MainActivity extends AppCompatActivity {
                      voiceInText = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
                     lblShowVoice.setText(voiceInText.get(0));
 
-                   // lblResultado.setText("Olá "+voiceInText.get(0));
+                    lblResultado.setText("Olá "+voiceInText.get(0));
 
+
+                    DatabaseReference cadastro = referencia.child("cadastro");
+
+                    Cadastro cad  = new Cadastro();
+                    cad.setNome(voiceInText.get(0));
+                    cad.setNome(voiceInText.get(1));
+
+                    cadastro.setValue(cad);
+
+
+
+
+
+                    //se o qe foi falado for difrente de nulo, adiciona no banco de dados
+                    /*
+                    if(voiceInText.get(0) != null){
+                        referencia.child("cadastroTeste").child("001").child("nome").setValue(voiceInText.get(0).toString());
+                    }*/
 
 
                 }
