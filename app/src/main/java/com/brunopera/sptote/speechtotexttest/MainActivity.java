@@ -14,10 +14,21 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
+//https://www.youtube.com/watch?v=ND6a4V-xdjI
+    //https://pt.stackoverflow.com/questions/50773/como-usar-onactivityresult-quando-h%C3%A1-mais-de-um-startactivityforresult
 
     private final int REQ_CODE_SPEECH_OUTPUT = 143;
+
+    //Label que recebe o que foi falado
     TextView lblShowVoice;
+    //Botão para começar a falar
     Button btnTap;
+    //Label que monta uma frase
+    TextView lblResultado;
+    //Array que recebe primeiramente o que foi falado
+    ArrayList<String>  voiceInText;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,19 +37,20 @@ public class MainActivity extends AppCompatActivity {
 
         btnTap = (Button) findViewById(R.id.btnTap);
         lblShowVoice = (TextView) findViewById(R.id.lblShowVoice);
+        lblResultado = (TextView) findViewById(R.id.lblResultado);
 
 
 
         btnTap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                btnToOpenMic();
+               openMic();
             }
         });
     }
 
 
-    private void btnToOpenMic(){
+    private void openMic(){
         Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
 
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
@@ -63,8 +75,11 @@ public class MainActivity extends AppCompatActivity {
         switch (requestCode){
             case REQ_CODE_SPEECH_OUTPUT: {
                 if(resultCode == RESULT_OK &&null != data){
-                    ArrayList<String>  voiceInText = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+                     voiceInText = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
                     lblShowVoice.setText(voiceInText.get(0));
+
+                    lblResultado.setText("Olá "+voiceInText.get(0));
+
                 }
                 break;
             }
