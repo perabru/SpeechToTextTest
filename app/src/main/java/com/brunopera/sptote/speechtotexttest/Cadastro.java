@@ -6,24 +6,32 @@ import java.util.Date;
 public class Cadastro {
 
     private String nome;
-    private String sobrenome;
+    private String snome;
+    private String unome;
+    private String qnome;
+
+
     private int idade;
     private Calendar data = Calendar.getInstance();
-    private String dataAtual = DateFormat.getDateInstance().format(data.getTime());
+    //private String dataAtual = DateFormat.getDateInstance().format(data.getTime());
 
+
+    private String dataAniversario;
 
     public Cadastro() {
 
 
     }
 
-    public String getDataAtual() {
+
+
+   /* public String getDataAtual() {
         return dataAtual;
     }
 
     public void setDataAtual(String dataAtual) {
         this.dataAtual = dataAtual;
-    }
+    }*/
 
     public String getNome() {
         return nome;
@@ -31,6 +39,38 @@ public class Cadastro {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public String getSnome() {
+        return snome;
+    }
+
+    public void setSnome(String snome) {
+        this.snome = snome;
+    }
+
+    public String getUnome() {
+        return unome;
+    }
+
+    public void setUnome(String unome) {
+        this.unome = unome;
+    }
+
+    public String getQnome() {
+        return qnome;
+    }
+
+    public void setQnome(String qnome) {
+        this.qnome = qnome;
+    }
+
+    public String getDataAniversario() {
+        return dataAniversario;
+    }
+
+    public void setDataAniversario(String dataAniversario) {
+        this.dataAniversario = dataAniversario;
     }
 
     public int getIdade() {
@@ -41,11 +81,5 @@ public class Cadastro {
         this.idade = idade;
     }
 
-    public String getSobrenome() {
-        return sobrenome;
-    }
 
-    public void setSobrenome(String sobrenome) {
-        this.sobrenome = sobrenome;
-    }
 }
