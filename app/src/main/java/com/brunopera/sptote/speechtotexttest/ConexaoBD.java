@@ -11,21 +11,27 @@ import java.util.ArrayList;
 public class ConexaoBD {
 
         //FiREBASE - vai no nó raiz do firebase
-         DatabaseReference referencia = FirebaseDatabase.getInstance().getReference();
+        static DatabaseReference referencia = FirebaseDatabase.getInstance().getReference();
         //adiciona a child cadastro em um objeto
-        DatabaseReference cadastro = referencia.child("cadastro");
-        String uniquePK = referencia.push().getKey();
+        static DatabaseReference cadastro = referencia.child("cadastro");
+
+       public static String uniquePK = cadastro.push().getKey();
 
         Cadastro cad = new Cadastro();
         String[] parts;
 
+        //String newPK;
 
-    public void inserirNomeBD(String nome ){
+       /* public void quebrarString (String teste){
+            String [] partes = teste.split("-");
+             newPK = partes[2];
+        }*/
+
+    public void inserirNomeBD(String nome){
 
             cad.setNome(nome);
+            //cad.setDataAtual(cad.getDataAtual());
            cadastro.child(uniquePK).child("Dados Iniciais").setValue(cad);
-
-
         }
 
         public void inserirIdadeBD(ArrayList<String> idade){
@@ -34,6 +40,7 @@ public class ConexaoBD {
             String[] str = new String[idade.size()];
             idade.toArray(str);
             parts = str[0].split("\\s+");
+
 
            cadastro.child(uniquePK).child("Idade").setValue(Integer.parseInt(parts[0]));
 
@@ -48,7 +55,7 @@ public class ConexaoBD {
 
         public void inserirEstadoCivil(String estadoCivil){
 
-        cad.setDataAniversario(estadoCivil);
+        cad.setEstadoCivil(estadoCivil);
         cadastro.child(uniquePK).child("Estado Civil").setValue(cad);
 
         }

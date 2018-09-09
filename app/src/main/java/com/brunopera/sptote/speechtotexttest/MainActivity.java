@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         lblShowVoice = (TextView) findViewById(R.id.lblShowVoice);
         lblResultado = (TextView) findViewById(R.id.lblResultado);
 
-        // openMic();
+        //openMic();
 
 
         btnTap.setOnClickListener(new View.OnClickListener() {
@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
 
                     } catch (Exception ex) {
                         // Log.i("ERRO PK", primaryKey);
-                        Toast.makeText(getApplicationContext(), "Não foi possível gravar seu nome e idade, tente de novo", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Não foi possível gravar seu nome e idade, tente de novo" +ex, Toast.LENGTH_LONG).show();
                         openMic();
 
                         break;
