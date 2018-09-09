@@ -18,14 +18,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 import java.util.Locale;
 
-
-//CLASSE ANIVERSARIO
-public class Teste extends AppCompatActivity {
+public class Idade extends AppCompatActivity {
 
     //Array que recebe primeiramente o que foi falado (nome, sobrenome e idade)
     ArrayList<String> voiceInText;
 
-    private TextView lblAniversario;
+    private TextView lblTesteIdade;
 
 
 
@@ -34,18 +32,18 @@ public class Teste extends AppCompatActivity {
 
 
 
-    private Button btnAniversario;
+    private Button btnTap2;
     private final int REQ_CODE_SPEECH_OUTPUT = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.teste);
-       // openMic();
-        btnAniversario = (Button) findViewById(R.id.btnAniversario);
-        lblAniversario = (TextView) findViewById(R.id.lblAniversario);
+        setContentView(R.layout.idade);
+        //openMic();
+        btnTap2 = (Button) findViewById(R.id.btnTap2);
+        lblTesteIdade = (TextView) findViewById(R.id.lblTesteIdade);
 
-        btnAniversario.setOnClickListener(new View.OnClickListener() {
+        btnTap2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 openMic();
@@ -59,7 +57,7 @@ public class Teste extends AppCompatActivity {
 
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
 
-        intent.putExtra(RecognizerIntent.EXTRA_PROMPT,"Olá, me fale seu aniversário");
+        intent.putExtra(RecognizerIntent.EXTRA_PROMPT,"Olá, me fala a sua idade");
         intent.putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_MINIMUM_LENGTH_MILLIS, 20000000);
 
         try{
@@ -87,27 +85,32 @@ public class Teste extends AppCompatActivity {
                     try {
                         voiceInText = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
 
-                        lblAniversario.setText(voiceInText.get(0));
+                        lblTesteIdade.setText(voiceInText.get(0));
 
                         Log.i("AQUI", voiceInText.toString());
                         DatabaseReference cadastro = referencia.child("cadastro");
 
+                        //corta o array para gravar apenas o numero da idade no banco
+                        String[] str = new String[voiceInText.size()];
+                        voiceInText.toArray(str);
+                        String[] parts = str[0].split("\\s+");
 
-                        cad.setDataAniversario(voiceInText.get(0));
+                        //DADOS A SEREM INSERIDOS
+                        //cad.setIdade(Integer.parseInt(parts[0]));
 
-                        cadastro.child("001").child("Nascimento").setValue(cad);
+                        cadastro.child("001").child("Idade").setValue(Integer.parseInt(parts[0]));
 
                         Toast.makeText(getApplicationContext(), "Dados cadastrados com sucesso!", Toast.LENGTH_SHORT).show();
 
                     }catch(Exception ex){
-                        Toast.makeText(getApplicationContext(), "Não foi possível gravar a data, tente de novo", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Não foi possível gravar a idade, tente de novo", Toast.LENGTH_SHORT).show();
                         openMic();
                     }
-                    }
+                }
 
-                Intent myIntent = new Intent(getApplicationContext(), EstadoCivil.class);
+                Intent myIntent = new Intent(getApplicationContext(), Teste.class);
                 startActivityForResult(myIntent, 0);
-                    break;
+                break;
 
                 //final do case
             }

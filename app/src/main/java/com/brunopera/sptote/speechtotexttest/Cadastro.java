@@ -12,20 +12,27 @@ public class Cadastro {
 
 
     private int idade;
-    private Calendar data = Calendar.getInstance();
+//    private Calendar data = Calendar.getInstance();
     //private String dataAtual = DateFormat.getDateInstance().format(data.getTime());
 
-
     private String dataAniversario;
+
+
+    private String estadoCivil;
 
     public Cadastro() {
 
 
     }
 
+    public String getEstadoCivil() {
+        return estadoCivil;
+    }
 
-
-   /* public String getDataAtual() {
+    public void setEstadoCivil(String estadoCivil) {
+        this.estadoCivil = estadoCivil;
+    }
+/* public String getDataAtual() {
         return dataAtual;
     }
 
@@ -72,14 +79,14 @@ public class Cadastro {
     public void setDataAniversario(String dataAniversario) {
         this.dataAniversario = dataAniversario;
     }
-
+/*
     public int getIdade() {
         return idade;
     }
 
     public void setIdade(int idade) {
         this.idade = idade;
-    }
+    }*/
 
 
 }

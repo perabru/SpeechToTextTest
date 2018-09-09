@@ -13,6 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Teste"/>
+        <activity android:name=".Idade"/>
+        <activity android:name=".EstadoCivil"/>
         <activity android:name=".MainActivity">
 
             <intent-filter>

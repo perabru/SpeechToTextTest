@@ -74,7 +74,8 @@ public class MainActivity extends AppCompatActivity {
 
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
 
-        intent.putExtra(RecognizerIntent.EXTRA_PROMPT,"Olá, qual seu nome e idade?");
+        intent.putExtra(RecognizerIntent.EXTRA_PROMPT,"Olá, qual seu nome ?");
+        intent.putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_MINIMUM_LENGTH_MILLIS, 20000000);
 
         try{
             startActivityForResult(intent, REQ_CODE_SPEECH_OUTPUT);
@@ -107,17 +108,17 @@ public class MainActivity extends AppCompatActivity {
 
 
                         //quebrando array por espaços em branco
-                        String[] str = new String[voiceInText.size()];
+                       /* String[] str = new String[voiceInText.size()];
                         voiceInText.toArray(str);
-                        String[] parts = str[0].split("\\s+");
+                        String[] parts = str[0].split("\\s+");*/
 
                         //DADOS A SEREM INSERIDOS
-                        // cad.setNome(voiceInText.get(0).toString());
-                        cad.setNome(parts[0]);
+                         cad.setNome(voiceInText.get(0).toString());
+                        /*cad.setNome(parts[0]);
                         cad.setSnome(parts[1]);
                         cad.setUnome(parts[2]);
                         cad.setQnome(parts[3]);
-                        cad.setIdade(Integer.parseInt(parts[4]));
+                        cad.setIdade(Integer.parseInt(parts[4]));*/
 
                         //Log.i("ARRAY", parts[2].toString());
 
@@ -131,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
 
                         Log.i("AQUI" +i,voiceInText.get(i));
                     }*/
-                        cadastro.child("004").child("Dados Inicias").setValue(cad);
+                        cadastro.child("001").child("Dados Inicias").setValue(cad);
 
                         Toast.makeText(getApplicationContext(), "Dados cadastrados com sucesso!", Toast.LENGTH_SHORT).show();
                         //contador++;
@@ -148,6 +149,8 @@ public class MainActivity extends AppCompatActivity {
 
                 }
 
+                Intent myIntent = new Intent(getApplicationContext(), Idade.class);
+                startActivityForResult(myIntent, 0);
                 break;
                 //final do case
             }
@@ -156,8 +159,6 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-        Intent myIntent = new Intent(getApplicationContext(), Teste.class);
-        startActivityForResult(myIntent, 0);
 
     }
 
