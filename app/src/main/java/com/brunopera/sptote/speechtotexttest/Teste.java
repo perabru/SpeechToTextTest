@@ -28,12 +28,6 @@ public class Teste extends AppCompatActivity {
     private TextView lblAniversario;
 
 
-
-    //FiREBASE - vai no nó raiz do firebase
-    private DatabaseReference referencia = FirebaseDatabase.getInstance().getReference();
-
-
-
     private Button btnAniversario;
     private final int REQ_CODE_SPEECH_OUTPUT = 1;
 
@@ -90,18 +84,16 @@ public class Teste extends AppCompatActivity {
                         lblAniversario.setText(voiceInText.get(0));
 
                         Log.i("AQUI", voiceInText.toString());
-                        DatabaseReference cadastro = referencia.child("cadastro");
 
-
-                        cad.setDataAniversario(voiceInText.get(0));
-
-                        cadastro.child("001").child("Nascimento").setValue(cad);
+                        ConexaoBD cbd = new ConexaoBD();
+                        cbd.inserirDataNasc(voiceInText.get(0));
 
                         Toast.makeText(getApplicationContext(), "Dados cadastrados com sucesso!", Toast.LENGTH_SHORT).show();
 
                     }catch(Exception ex){
                         Toast.makeText(getApplicationContext(), "Não foi possível gravar a data, tente de novo", Toast.LENGTH_SHORT).show();
                         openMic();
+                        break;
                     }
                     }
 

@@ -28,7 +28,7 @@ public class Idade extends AppCompatActivity {
 
 
     //FiREBASE - vai no nó raiz do firebase
-    private DatabaseReference referencia = FirebaseDatabase.getInstance().getReference();
+   // private DatabaseReference referencia = FirebaseDatabase.getInstance().getReference();
 
 
 
@@ -79,7 +79,7 @@ public class Idade extends AppCompatActivity {
                 if (resultCode == RESULT_OK && null != data) {
 
                     //classe cadastro
-                    Cadastro cad  = new Cadastro();
+                  //  Cadastro cad  = new Cadastro();
 
 
                     try {
@@ -88,23 +88,18 @@ public class Idade extends AppCompatActivity {
                         lblTesteIdade.setText(voiceInText.get(0));
 
                         Log.i("AQUI", voiceInText.toString());
-                        DatabaseReference cadastro = referencia.child("cadastro");
 
-                        //corta o array para gravar apenas o numero da idade no banco
-                        String[] str = new String[voiceInText.size()];
-                        voiceInText.toArray(str);
-                        String[] parts = str[0].split("\\s+");
 
-                        //DADOS A SEREM INSERIDOS
-                        //cad.setIdade(Integer.parseInt(parts[0]));
+                        ConexaoBD cbd = new ConexaoBD();
+                        cbd.inserirIdadeBD(voiceInText);
 
-                        cadastro.child("001").child("Idade").setValue(Integer.parseInt(parts[0]));
 
                         Toast.makeText(getApplicationContext(), "Dados cadastrados com sucesso!", Toast.LENGTH_SHORT).show();
 
                     }catch(Exception ex){
                         Toast.makeText(getApplicationContext(), "Não foi possível gravar a idade, tente de novo", Toast.LENGTH_SHORT).show();
                         openMic();
+                        break;
                     }
                 }
 

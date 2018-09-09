@@ -28,7 +28,7 @@ public class EstadoCivil extends AppCompatActivity {
 
 
     //FiREBASE - vai no nó raiz do firebase
-    private DatabaseReference referencia = FirebaseDatabase.getInstance().getReference();
+    //private DatabaseReference referencia = FirebaseDatabase.getInstance().getReference();
 
 
 
@@ -59,7 +59,7 @@ public class EstadoCivil extends AppCompatActivity {
 
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
 
-        intent.putExtra(RecognizerIntent.EXTRA_PROMPT,"Olá, me fale seu aniversário");
+        intent.putExtra(RecognizerIntent.EXTRA_PROMPT,"Olá, qual seu estado civil?");
         intent.putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_MINIMUM_LENGTH_MILLIS, 20000000);
 
         try{
@@ -81,7 +81,7 @@ public class EstadoCivil extends AppCompatActivity {
                 if (resultCode == RESULT_OK && null != data) {
 
                     //classe cadastro
-                    Cadastro cad  = new Cadastro();
+                    //Cadastro cad  = new Cadastro();
 
 
                     try {
@@ -90,22 +90,20 @@ public class EstadoCivil extends AppCompatActivity {
                         lblTeste.setText(voiceInText.get(0));
 
                         Log.i("AQUI", voiceInText.toString());
-                        DatabaseReference cadastro = referencia.child("cadastro");
 
-
-                        cad.setEstadoCivil(voiceInText.get(0));
-
-                        cadastro.child("001").child("Estado Civil").setValue(cad);
+                        ConexaoBD cbd = new ConexaoBD();
+                        cbd.inserirEstadoCivil(voiceInText.get(0));
 
                         Toast.makeText(getApplicationContext(), "Dados cadastrados com sucesso!", Toast.LENGTH_SHORT).show();
 
                     }catch(Exception ex){
                         Toast.makeText(getApplicationContext(), "Não foi possível gravar a data, tente de novo", Toast.LENGTH_SHORT).show();
                         openMic();
+                        break;
                     }
                 }
 
-              //  Intent myIntent = new Intent(getApplicationContext(), EstadoCivil.class);
+              //Intent myIntent = new Intent(getApplicationContext(), EstadoCivil.class);
                 //startActivityForResult(myIntent, 0);
                 break;
 

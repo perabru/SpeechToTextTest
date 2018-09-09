@@ -23,7 +23,10 @@ public class Cadastro {
     public Cadastro() {
 
 
+
+
     }
+
 
     public String getEstadoCivil() {
         return estadoCivil;

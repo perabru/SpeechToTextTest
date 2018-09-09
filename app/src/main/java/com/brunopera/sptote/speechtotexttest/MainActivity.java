@@ -27,23 +27,18 @@ public class MainActivity extends AppCompatActivity {
 
 
     //classe cadastro
-    private Cadastro cad  = new Cadastro();
+    private Cadastro cad = new Cadastro();
     //Label que recebe o que foi falado
     private TextView lblShowVoice;
     //Botão para começar a falar
-   private Button btnTap;
+    private Button btnTap;
     //Label que monta uma frase
-   private TextView lblResultado;
+    private TextView lblResultado;
     //Array que recebe primeiramente o que foi falado (nome, sobrenome e idade)
-    private ArrayList<String>  voiceInText;
+    private ArrayList<String> voiceInText;
 
 
 
-        //FiREBASE - vai no nó raiz do firebase
-    private DatabaseReference referencia = FirebaseDatabase.getInstance().getReference();
-
-
-    int contador = 0;
 
 
     @Override
@@ -51,37 +46,39 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+
         btnTap = (Button) findViewById(R.id.btnTap);
         lblShowVoice = (TextView) findViewById(R.id.lblShowVoice);
         lblResultado = (TextView) findViewById(R.id.lblResultado);
-      // openMic();
 
+        // openMic();
 
 
         btnTap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               openMic();
+                openMic();
             }
         });
     }
 
 
-    private void openMic(){
+    private void openMic() {
         Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
 
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
 
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
 
-        intent.putExtra(RecognizerIntent.EXTRA_PROMPT,"Olá, qual seu nome ?");
+        intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Olá, qual seu nome ?");
         intent.putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_MINIMUM_LENGTH_MILLIS, 20000000);
 
-        try{
+        try {
             startActivityForResult(intent, REQ_CODE_SPEECH_OUTPUT);
-        }catch(ActivityNotFoundException tim){
+        } catch (ActivityNotFoundException tim) {
 
-            Toast.makeText(getApplicationContext(),"Opps! Your device doesn’t support Speech to Text",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Opps! Your device doesn’t support Speech to Text", Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -90,9 +87,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        switch (requestCode){
+        switch (requestCode) {
             case REQ_CODE_SPEECH_OUTPUT: {
-                if(resultCode == RESULT_OK && null != data){
+                if (resultCode == RESULT_OK && null != data) {
 
                     try {
 
@@ -103,48 +100,19 @@ public class MainActivity extends AppCompatActivity {
                         lblResultado.setText("Olá, " + voiceInText.get(0));
 
 
-                        //adiciona a child cadastro em um objeto
-                        DatabaseReference cadastro = referencia.child("cadastro");
 
+                      ConexaoBD cbd = new ConexaoBD();
+                      cbd.inserirNomeBD(voiceInText.get(0).toString());
 
-                        //quebrando array por espaços em branco
-                       /* String[] str = new String[voiceInText.size()];
-                        voiceInText.toArray(str);
-                        String[] parts = str[0].split("\\s+");*/
-
-                        //DADOS A SEREM INSERIDOS
-                         cad.setNome(voiceInText.get(0).toString());
-                        /*cad.setNome(parts[0]);
-                        cad.setSnome(parts[1]);
-                        cad.setUnome(parts[2]);
-                        cad.setQnome(parts[3]);
-                        cad.setIdade(Integer.parseInt(parts[4]));*/
-
-                        //Log.i("ARRAY", parts[2].toString());
-
-
-                        // cad.setIdade(Integer.parseInt(parts[3]));
-                        //cad.setDataAtual(cad.getDataAtual());
-
-
-
-                    /*for(int i = 0; i < voiceInText.size(); i++){
-
-                        Log.i("AQUI" +i,voiceInText.get(i));
-                    }*/
-                        cadastro.child("001").child("Dados Inicias").setValue(cad);
 
                         Toast.makeText(getApplicationContext(), "Dados cadastrados com sucesso!", Toast.LENGTH_SHORT).show();
-                        //contador++;
 
-                        //se o qe foi falado for difrente de nulo, adiciona no banco de dados
-                    /*
-                    if(voiceInText.get(0) != null){
-                        referencia.child("cadastroTeste").child("001").child("nome").setValue(voiceInText.get(0).toString());
-                    }*/
-                    }catch (Exception ex){
+                    } catch (Exception ex) {
+                        // Log.i("ERRO PK", primaryKey);
                         Toast.makeText(getApplicationContext(), "Não foi possível gravar seu nome e idade, tente de novo", Toast.LENGTH_SHORT).show();
                         openMic();
+
+                        break;
                     }
 
                 }
@@ -154,7 +122,6 @@ public class MainActivity extends AppCompatActivity {
                 break;
                 //final do case
             }
-
 
 
         }
