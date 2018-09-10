@@ -39,7 +39,7 @@ public class Idade extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.idade);
-       // openMic();
+        openMic();
         btnTap2 = (Button) findViewById(R.id.btnTap2);
         lblTesteIdade = (TextView) findViewById(R.id.lblTesteIdade);
 
@@ -57,7 +57,7 @@ public class Idade extends AppCompatActivity {
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
 
         intent.putExtra(RecognizerIntent.EXTRA_PROMPT,"Olá, me fala a sua idade");
-        intent.putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_MINIMUM_LENGTH_MILLIS, 20000000);
+        intent.putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_MINIMUM_LENGTH_MILLIS, 30000000);
 
         try{
             startActivityForResult(intent, REQ_CODE_SPEECH_OUTPUT);

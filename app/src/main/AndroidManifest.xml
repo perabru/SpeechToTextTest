@@ -15,6 +15,14 @@
         <activity android:name=".Teste"/>
         <activity android:name=".Idade"/>
         <activity android:name=".EstadoCivil"/>
+        <activity android:name=".Endereco"/>
+        <activity android:name=".Bairro"/>
+        <activity android:name=".Cidade"/>
+        <activity android:name=".CEP"/>
+        <activity android:name=".Telefone"/>
+        <activity android:name=".Celular"/>
+        <activity android:name=".Profissao"/>
+        <activity android:name=".Email"/>
         <activity android:name=".MainActivity">
 
             <intent-filter>

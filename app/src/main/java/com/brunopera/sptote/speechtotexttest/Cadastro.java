@@ -6,24 +6,22 @@ import java.util.Date;
 public class Cadastro {
 
     private String nome;
-    private String snome;
-    private String unome;
-    private String qnome;
-
-
-    private int idade;
   /*private Calendar data = Calendar.getInstance();
     private String dataAtual = DateFormat.getDateInstance().format(data.getTime());*/
-
     private String dataAniversario;
-
-
     private String estadoCivil;
+    private String endereco;
+    private String bairro;
+    private String cidade;
+    private String CEP;
+    private String telefone;
+    private String celular;
+    private String profissao;
+    private String email;
+
+
 
     public Cadastro() {
-
-
-
 
     }
 
@@ -52,29 +50,6 @@ public class Cadastro {
         this.nome = nome;
     }
 
-    public String getSnome() {
-        return snome;
-    }
-
-    public void setSnome(String snome) {
-        this.snome = snome;
-    }
-
-    public String getUnome() {
-        return unome;
-    }
-
-    public void setUnome(String unome) {
-        this.unome = unome;
-    }
-
-    public String getQnome() {
-        return qnome;
-    }
-
-    public void setQnome(String qnome) {
-        this.qnome = qnome;
-    }
 
     public String getDataAniversario() {
         return dataAniversario;
@@ -84,6 +59,67 @@ public class Cadastro {
         this.dataAniversario = dataAniversario;
     }
 
+    public String getEndereco() {
+        return endereco;
+    }
 
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
 
+    public String getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public String getCEP() {
+        return CEP;
+    }
+
+    public void setCEP(String CEP) {
+        this.CEP = CEP;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public String getCelular() {
+        return celular;
+    }
+
+    public void setCelular(String celular) {
+        this.celular = celular;
+    }
+
+    public String getProfissao() {
+        return profissao;
+    }
+
+    public void setProfissao(String profissao) {
+        this.profissao = profissao;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }

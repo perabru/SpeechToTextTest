@@ -12,21 +12,15 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
 import java.util.ArrayList;
 import java.util.Locale;
 
-public class EstadoCivil extends AppCompatActivity {
+public class Endereco extends AppCompatActivity {
 
     //Array que recebe primeiramente o que foi falado (nome, sobrenome e idade)
     ArrayList<String> voiceInText;
 
     private TextView lblTeste;
-
-    //FiREBASE - vai no nó raiz do firebase
-    //private DatabaseReference referencia = FirebaseDatabase.getInstance().getReference();
 
     private Button btnTap2;
 
@@ -35,7 +29,7 @@ public class EstadoCivil extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.estadocivil);
+        setContentView(R.layout.endereco);
         openMic();
 
         btnTap2 = (Button) findViewById(R.id.btnTap2);
@@ -44,7 +38,7 @@ public class EstadoCivil extends AppCompatActivity {
         btnTap2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               openMic();
+                openMic();
             }
         });
     }
@@ -55,8 +49,8 @@ public class EstadoCivil extends AppCompatActivity {
 
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
 
-        intent.putExtra(RecognizerIntent.EXTRA_PROMPT,"Olá, qual seu estado civil?");
-        intent.putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_MINIMUM_LENGTH_MILLIS, 20000000);
+        intent.putExtra(RecognizerIntent.EXTRA_PROMPT,"Olá, qual seu endereço?");
+        intent.putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_MINIMUM_LENGTH_MILLIS, 30000000);
 
         try{
             startActivityForResult(intent, REQ_CODE_SPEECH_OUTPUT);
@@ -88,24 +82,23 @@ public class EstadoCivil extends AppCompatActivity {
                         Log.i("AQUI", voiceInText.toString());
 
                         ConexaoBD cbd = new ConexaoBD();
-                        cbd.inserirEstadoCivil(voiceInText.get(0));
+                       cbd.inserirEndereco(voiceInText.get(0));
 
                         Toast.makeText(getApplicationContext(), "Dados cadastrados com sucesso!", Toast.LENGTH_SHORT).show();
 
                     }catch(Exception ex){
-                        Toast.makeText(getApplicationContext(), "Não foi possível gravar a data, tente de novo", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Não foi possível gravar o endereço, tente de novo", Toast.LENGTH_SHORT).show();
                         openMic();
                         break;
                     }
                 }
 
-                  Intent myIntent = new Intent(getApplicationContext(), Endereco.class);
-                  startActivityForResult(myIntent, 0);
+                Intent myIntent = new Intent(getApplicationContext(), Bairro.class);
+                startActivityForResult(myIntent, 0);
                 break;
 
                 //final do case
             }
         }
     }
-
 }

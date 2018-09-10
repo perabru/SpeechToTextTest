@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         lblShowVoice = (TextView) findViewById(R.id.lblShowVoice);
         lblResultado = (TextView) findViewById(R.id.lblResultado);
 
-        //openMic();
+        openMic();
 
 
         btnTap.setOnClickListener(new View.OnClickListener() {
