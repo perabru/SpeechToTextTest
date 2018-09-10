@@ -35,7 +35,7 @@ public class Teste extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.teste);
-       openMic();
+      // openMic();
         btnAniversario = (Button) findViewById(R.id.btnAniversario);
         lblAniversario = (TextView) findViewById(R.id.lblAniversario);
 

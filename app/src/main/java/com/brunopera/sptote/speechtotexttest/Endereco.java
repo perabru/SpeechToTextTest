@@ -30,7 +30,7 @@ public class Endereco extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.endereco);
-        openMic();
+       // openMic();
 
         btnTap2 = (Button) findViewById(R.id.btnTap2);
         lblTeste = (TextView) findViewById(R.id.lblTeste);

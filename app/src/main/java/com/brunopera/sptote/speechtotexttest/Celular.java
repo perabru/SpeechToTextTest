@@ -35,7 +35,7 @@ public class Celular extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.celular);
-        openMic();
+        //openMic();
         btnTap2 = (Button) findViewById(R.id.btnTap2);
         lblTeste = (TextView) findViewById(R.id.lblTeste);
 

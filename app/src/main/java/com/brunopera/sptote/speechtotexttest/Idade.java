@@ -39,7 +39,7 @@ public class Idade extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.idade);
-        openMic();
+        //openMic();
         btnTap2 = (Button) findViewById(R.id.btnTap2);
         lblTesteIdade = (TextView) findViewById(R.id.lblTesteIdade);
 
