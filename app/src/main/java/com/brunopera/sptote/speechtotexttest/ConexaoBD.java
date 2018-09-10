@@ -118,6 +118,13 @@ public class ConexaoBD {
 
     }
 
+    public void inserirDiagnostico(String diagnostico) {
+
+        cad.setEmail(diagnostico);
+        cadastro.child(uniquePK).child("Email").setValue(cad);
+
+    }
+
 
 }
 

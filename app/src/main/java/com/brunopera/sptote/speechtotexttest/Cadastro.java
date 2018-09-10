@@ -18,6 +18,7 @@ public class Cadastro {
     private String celular;
     private String profissao;
     private String email;
+    private String diagnostico;
 
 
 
@@ -121,5 +122,13 @@ public class Cadastro {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getDiagnostico() {
+        return diagnostico;
+    }
+
+    public void setDiagnostico(String diagnostico) {
+        this.diagnostico = diagnostico;
     }
 }
