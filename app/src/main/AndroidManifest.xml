@@ -5,6 +5,13 @@
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the 'MyLocation' functionality. 
+    -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -12,25 +19,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Teste"/>
-        <activity android:name=".Idade"/>
-        <activity android:name=".EstadoCivil"/>
-        <activity android:name=".Endereco"/>
-        <activity android:name=".Bairro"/>
-        <activity android:name=".Cidade"/>
-        <activity android:name=".CEP"/>
-        <activity android:name=".Telefone"/>
-        <activity android:name=".Celular"/>
-        <activity android:name=".Profissao"/>
-        <activity android:name=".Email"/>
+        <activity android:name=".Teste" />
+        <activity android:name=".Idade" />
+        <activity android:name=".EstadoCivil" />
+        <activity android:name=".Endereco" />
+        <activity android:name=".Bairro" />
+        <activity android:name=".Cidade" />
+        <activity android:name=".CEP" />
+        <activity android:name=".Telefone" />
+        <activity android:name=".Celular" />
+        <activity android:name=".Profissao" />
+        <activity android:name=".Email" />
         <activity android:name=".MainActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
     </application>
 
 </manifest>
