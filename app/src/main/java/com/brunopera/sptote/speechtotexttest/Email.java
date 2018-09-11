@@ -55,7 +55,7 @@ public class Email extends AppCompatActivity {
 
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
 
-        intent.putExtra(RecognizerIntent.EXTRA_PROMPT,"Olá, me fala a sua profissão");
+        intent.putExtra(RecognizerIntent.EXTRA_PROMPT,"Olá, me fala o seu email");
         intent.putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_MINIMUM_LENGTH_MILLIS, 30000000);
 
         try{
@@ -90,6 +90,11 @@ public class Email extends AppCompatActivity {
 
                         ConexaoBD cbd = new ConexaoBD();
                         cbd.inserirEmail(voiceInText.get(0));
+
+
+                        /*Unicamente para adicionar data atual*/
+                        Cadastro cadastro = new Cadastro();
+                        cbd.inserirData();
 
 
                         Toast.makeText(getApplicationContext(), "Dados cadastrados com sucesso!", Toast.LENGTH_SHORT).show();

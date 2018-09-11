@@ -49,7 +49,7 @@ public class Cidade extends AppCompatActivity {
 
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
 
-        intent.putExtra(RecognizerIntent.EXTRA_PROMPT,"Olá, qual seu endereço?");
+        intent.putExtra(RecognizerIntent.EXTRA_PROMPT,"Olá, qual sua cidade?");
         intent.putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_MINIMUM_LENGTH_MILLIS, 30000000);
 
         try{

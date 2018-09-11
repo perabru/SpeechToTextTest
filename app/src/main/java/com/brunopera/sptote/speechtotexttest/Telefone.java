@@ -53,7 +53,7 @@ public class Telefone extends AppCompatActivity {
 
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
 
-        intent.putExtra(RecognizerIntent.EXTRA_PROMPT,"Olá, me fala a sua idade");
+        intent.putExtra(RecognizerIntent.EXTRA_PROMPT,"Olá, me fala o seu telefone");
         intent.putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_MINIMUM_LENGTH_MILLIS, 30000000);
 
         try{

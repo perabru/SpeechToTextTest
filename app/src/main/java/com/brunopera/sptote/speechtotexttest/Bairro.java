@@ -30,7 +30,7 @@ public class Bairro extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bairro);
-        openMic();
+       // openMic();
 
         btnTap2 = (Button) findViewById(R.id.btnTap2);
         lblTeste = (TextView) findViewById(R.id.lblTeste);
@@ -49,7 +49,7 @@ public class Bairro extends AppCompatActivity {
 
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
 
-        intent.putExtra(RecognizerIntent.EXTRA_PROMPT,"Olá, qual seu endereço?");
+        intent.putExtra(RecognizerIntent.EXTRA_PROMPT,"Olá, qual seu bairro?");
         intent.putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_MINIMUM_LENGTH_MILLIS, 30000000);
 
         try{

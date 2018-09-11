@@ -6,7 +6,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.lang.reflect.Array;
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class ConexaoBD {
 
@@ -113,15 +115,16 @@ public class ConexaoBD {
 
     public void inserirEmail(String email) {
 
-        cad.setEmail(email);
+        cad.setEmail(email.replaceAll("\\s+",""));
         cadastro.child(uniquePK).child("Email").setValue(cad);
 
     }
 
-    public void inserirDiagnostico(String diagnostico) {
+    public void inserirData() {
+         Calendar data = Calendar.getInstance();
+         String dataAtual = DateFormat.getDateInstance().format(data.getTime());
 
-        cad.setEmail(diagnostico);
-        cadastro.child(uniquePK).child("Email").setValue(cad);
+        cadastro.child(uniquePK).child("Data").setValue(dataAtual);
 
     }
 

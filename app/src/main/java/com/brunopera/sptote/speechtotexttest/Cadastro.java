@@ -6,7 +6,7 @@ import java.util.Date;
 public class Cadastro {
 
     private String nome;
-  /*private Calendar data = Calendar.getInstance();
+  /*  private Calendar data = Calendar.getInstance();
     private String dataAtual = DateFormat.getDateInstance().format(data.getTime());*/
     private String dataAniversario;
     private String estadoCivil;
@@ -18,7 +18,7 @@ public class Cadastro {
     private String celular;
     private String profissao;
     private String email;
-    private String diagnostico;
+
 
 
 
@@ -34,14 +34,7 @@ public class Cadastro {
     public void setEstadoCivil(String estadoCivil) {
         this.estadoCivil = estadoCivil;
     }
-    /*
- public String getDataAtual() {
-        return dataAtual;
-    }
 
-    public void setDataAtual(String dataAtual) {
-        this.dataAtual = dataAtual;
-    }*/
 
     public String getNome() {
         return nome;
@@ -124,11 +117,5 @@ public class Cadastro {
         this.email = email;
     }
 
-    public String getDiagnostico() {
-        return diagnostico;
-    }
 
-    public void setDiagnostico(String diagnostico) {
-        this.diagnostico = diagnostico;
-    }
 }

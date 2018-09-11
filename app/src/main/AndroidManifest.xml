@@ -23,7 +23,6 @@
         <activity android:name=".Celular"/>
         <activity android:name=".Profissao"/>
         <activity android:name=".Email"/>
-        <activity android:name=".Diagnostico"/>
         <activity android:name=".MainActivity">
 
             <intent-filter>

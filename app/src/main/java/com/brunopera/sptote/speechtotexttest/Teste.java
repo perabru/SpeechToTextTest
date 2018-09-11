@@ -35,7 +35,7 @@ public class Teste extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.teste);
-      // openMic();
+      //m  openMic();
         btnAniversario = (Button) findViewById(R.id.btnAniversario);
         lblAniversario = (TextView) findViewById(R.id.lblAniversario);
 
@@ -53,7 +53,7 @@ public class Teste extends AppCompatActivity {
 
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
 
-        intent.putExtra(RecognizerIntent.EXTRA_PROMPT,"Olá, me fale seu aniversário");
+        intent.putExtra(RecognizerIntent.EXTRA_PROMPT,"Olá, me fale sua data de nascimento");
         intent.putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_MINIMUM_LENGTH_MILLIS, 20000000);
 
         try{
