@@ -94,19 +94,22 @@ public class Email extends AppCompatActivity {
 
                         /*Unicamente para adicionar data atual*/
                         Cadastro cadastro = new Cadastro();
+                        MapsActivity mapsActivity = new MapsActivity();
                         cbd.inserirData();
+                        cbd.inserirLocalizacao(mapsActivity.getEndereco().toString());
 
 
                         Toast.makeText(getApplicationContext(), "Dados cadastrados com sucesso!", Toast.LENGTH_SHORT).show();
 
                     }catch(Exception ex){
-                        Toast.makeText(getApplicationContext(), "Não foi possível gravar a Profissão, tente de novo", Toast.LENGTH_SHORT).show();
-                        openMic();
+                        Toast.makeText(getApplicationContext(), "Não foi possível gravar o email, tente de novo", Toast.LENGTH_SHORT).show();
+                       System.out.println("ERRO -----------------------------" +ex);
+                        // openMic();
                         break;
                     }
                 }
 
-                //Intent myIntent = new Intent(getApplicationContext(), Email.class);
+                //Intent myIntent = new Intent(getApplicationContext(), MapsActivity.class);
                 //startActivityForResult(myIntent, 0);
                 break;
 

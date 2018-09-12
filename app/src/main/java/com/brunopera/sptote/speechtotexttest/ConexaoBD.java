@@ -115,6 +115,7 @@ public class ConexaoBD {
 
     public void inserirEmail(String email) {
 
+        email.replaceAll("arroba","@");
         cad.setEmail(email.replaceAll("\\s+",""));
         cadastro.child(uniquePK).child("Email").setValue(cad);
 
@@ -125,6 +126,15 @@ public class ConexaoBD {
          String dataAtual = DateFormat.getDateInstance().format(data.getTime());
 
         cadastro.child(uniquePK).child("Data").setValue(dataAtual);
+
+    }
+
+    public void inserirLocalizacao(String localizacaoAtual) {
+
+        MapsActivity mapsActivity = new MapsActivity();
+
+
+        cadastro.child(uniquePK).child("Localização Atual").setValue(localizacaoAtual);
 
     }
 
